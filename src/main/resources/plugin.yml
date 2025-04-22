@@ -1,0 +1,7 @@
+name: Multiverse-Core-Legacy-Api
+version: ${version}
+main: com.onarandombox.MultiverseCore.MultiverseCore
+api-version: '1.13'
+authors: [ benwoo1110 ]
+description: Adds legacy support for Multiverse-Core v4 api
+loadbefore: [ 'Multiverse-Core' ]
