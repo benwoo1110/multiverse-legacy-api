@@ -1,10 +1,12 @@
-package com.onarandombox.mv5remap;
+package com.onarandombox.mv5remap.events;
 
 import com.onarandombox.multiverseinventories.event.GameModeChangeShareHandlingEvent;
 import com.onarandombox.multiverseinventories.event.WorldChangeShareHandlingEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 public class InventoriesLegacyEventMapper extends LegacyEventMapper implements Listener {
 
     @EventHandler

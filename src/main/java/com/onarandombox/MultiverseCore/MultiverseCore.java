@@ -2,8 +2,9 @@ package com.onarandombox.MultiverseCore;
 
 import com.onarandombox.MultiverseCore.api.Core;
 import com.onarandombox.MultiverseCore.api.MVWorldManager;
-import com.onarandombox.mv5remap.CoreLegacyEventMapper;
-import com.onarandombox.mv5remap.InventoriesLegacyEventMapper;
+import com.onarandombox.MultiverseCore.destination.DestinationFactory;
+import com.onarandombox.mv5remap.events.CoreLegacyEventMapper;
+import com.onarandombox.mv5remap.events.InventoriesLegacyEventMapper;
 import com.onarandombox.mv5remap.PluginManagerInjector;
 import com.onarandombox.MultiverseCore.utils.AnchorManager;
 import com.onarandombox.MultiverseCore.utils.WorldManager;
@@ -14,10 +15,10 @@ import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mvplugins.multiverse.core.MultiverseCoreApi;
 import org.mvplugins.multiverse.core.world.helpers.PlayerWorldTeleporter;
-import org.mvplugins.multiverse.inventories.MultiverseInventories;
 
 public final class MultiverseCore extends JavaPlugin implements Core, Listener {
 
+    private DestinationFactory legacyDestinationFactory;
     private WorldManager legacyWorldManager;
     private AnchorManager legacyAnchorManager;
 
@@ -48,10 +49,8 @@ public final class MultiverseCore extends JavaPlugin implements Core, Listener {
 
         // Plugin startup logic
         MultiverseCoreApi api = MultiverseCoreApi.get();
-        legacyWorldManager = new WorldManager(
-                api.getWorldManager(),
-                api.getServiceLocator().getService(PlayerWorldTeleporter.class)
-        );
+        legacyDestinationFactory = new DestinationFactory(api.getDestinationsProvider());
+        legacyWorldManager = new WorldManager(api.getWorldManager(), api.getServiceLocator().getService(PlayerWorldTeleporter.class));
         legacyAnchorManager = new AnchorManager(api.getAnchorManager());
 
         // Register legacy listeners
@@ -71,6 +70,11 @@ public final class MultiverseCore extends JavaPlugin implements Core, Listener {
     public void onDisable() {
         // Plugin shutdown logic
         super.onDisable();
+    }
+
+    @Override
+    public DestinationFactory getDestFactory() {
+        return legacyDestinationFactory;
     }
 
     @Override

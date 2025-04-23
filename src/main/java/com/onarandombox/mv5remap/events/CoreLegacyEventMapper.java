@@ -1,4 +1,4 @@
-package com.onarandombox.mv5remap;
+package com.onarandombox.mv5remap.events;
 
 import com.onarandombox.MultiverseCore.MVWorld;
 import com.onarandombox.MultiverseCore.event.MVRespawnEvent;
