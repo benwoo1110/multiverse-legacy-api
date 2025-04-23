@@ -14,6 +14,7 @@ import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mvplugins.multiverse.core.MultiverseCoreApi;
 import org.mvplugins.multiverse.core.world.helpers.PlayerWorldTeleporter;
+import org.mvplugins.multiverse.external.vavr.control.Try;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -73,7 +74,7 @@ public final class MultiverseCore extends JavaPlugin implements Core, Listener {
 
         try {
             SimplePluginManager pluginManager = (SimplePluginManager) getServer().getPluginManager();
-            PluginManager paperPluginManager = pluginManager.paperPluginManager;
+            PluginManager paperPluginManager = Try.of(() -> pluginManager.paperPluginManager).getOrNull();
             if (paperPluginManager == null) {
                 getLogger().info("Could not get paperPluginManager from PluginManager. Ignore if using spigot.");
                 return;
