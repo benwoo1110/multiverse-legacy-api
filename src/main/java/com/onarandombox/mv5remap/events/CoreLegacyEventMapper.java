@@ -1,6 +1,7 @@
 package com.onarandombox.mv5remap.events;
 
 import com.onarandombox.MultiverseCore.MVWorld;
+import com.onarandombox.MultiverseCore.event.MVPlayerTouchedPortalEvent;
 import com.onarandombox.MultiverseCore.event.MVRespawnEvent;
 import com.onarandombox.MultiverseCore.event.MVTeleportEvent;
 import com.onarandombox.MultiverseCore.event.MVWorldDeleteEvent;
@@ -12,6 +13,11 @@ import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
 public class CoreLegacyEventMapper extends LegacyEventMapper implements Listener {
+
+    @EventHandler
+    private void onMVPlayerTouchedPortalEvent(org.mvplugins.multiverse.core.event.MVPlayerTouchedPortalEvent event) {
+        callEvent(new MVPlayerTouchedPortalEvent(event.getPlayer(), event.getBlockTouched()), event);
+    }
 
     @EventHandler
     private void onMVRespawnEvent(org.mvplugins.multiverse.core.event.MVRespawnEvent event) {

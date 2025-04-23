@@ -3,7 +3,9 @@ package com.onarandombox.mv5remap.events;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 abstract class LegacyEventMapper {
     protected void callEvent(Event legacyEvent, Event event) {
         Bukkit.getPluginManager().callEvent(legacyEvent);

@@ -8,9 +8,12 @@ import com.onarandombox.MultiverseCore.destination.ExactDestination;
 import com.onarandombox.MultiverseCore.destination.InvalidDestination;
 import com.onarandombox.MultiverseCore.destination.PlayerDestination;
 import com.onarandombox.MultiverseCore.destination.WorldDestination;
+import org.jetbrains.annotations.ApiStatus;
 import org.mvplugins.multiverse.core.destination.DestinationInstance;
 
+@ApiStatus.Internal
 public final class MVDestinationMapper {
+
     public static MVDestination fromDestinationInstance(DestinationInstance<?, ?> destinationInstance) {
         if (destinationInstance == null) {
             return new InvalidDestination();

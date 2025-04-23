@@ -5,9 +5,11 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.ApiStatus;
 import org.mvplugins.multiverse.core.destination.Destination;
 import org.mvplugins.multiverse.core.destination.DestinationInstance;
 
+@ApiStatus.Internal
 public class LegacyMVDestination implements MVDestination {
 
     private final Destination<?, ?, ?> destination;
