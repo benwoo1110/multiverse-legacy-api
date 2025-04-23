@@ -1,4 +1,4 @@
-name: Multiverse-Core-Legacy-Api
+name: Multiverse-Legacy-Api
 version: ${version}
 main: com.onarandombox.MultiverseCore.MultiverseCore
 api-version: '1.13'
