@@ -10,7 +10,7 @@ import com.onarandombox.MultiverseCore.destination.PlayerDestination;
 import com.onarandombox.MultiverseCore.destination.WorldDestination;
 import org.mvplugins.multiverse.core.destination.DestinationInstance;
 
-public final class DestinationInstanceMapper {
+public final class MVDestinationMapper {
     public static MVDestination fromDestinationInstance(DestinationInstance<?, ?> destinationInstance) {
         if (destinationInstance == null) {
             return new InvalidDestination();

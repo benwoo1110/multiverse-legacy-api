@@ -1,7 +1,7 @@
 package com.onarandombox.MultiverseCore.destination;
 
 import com.onarandombox.MultiverseCore.api.MVDestination;
-import com.onarandombox.mv5remap.destinations.DestinationInstanceMapper;
+import com.onarandombox.mv5remap.destinations.MVDestinationMapper;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.mvplugins.multiverse.core.destination.Destination;
@@ -39,7 +39,7 @@ public class DestinationFactory {
      * @return A non-null MVDestination
      */
     public MVDestination getDestination(String destination) {
-        return DestinationInstanceMapper.fromDestinationInstance(
+        return MVDestinationMapper.fromDestinationInstance(
                 destinationsProvider.parseDestination(destination).getOrNull());
     }
 
