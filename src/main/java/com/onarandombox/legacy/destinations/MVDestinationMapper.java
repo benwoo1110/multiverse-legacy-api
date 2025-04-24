@@ -1,4 +1,4 @@
-package com.onarandombox.mv5remap.destinations;
+package com.onarandombox.legacy.destinations;
 
 import com.onarandombox.MultiverseCore.api.MVDestination;
 import com.onarandombox.MultiverseCore.destination.AnchorDestination;

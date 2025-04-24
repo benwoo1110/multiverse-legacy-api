@@ -1,11 +1,11 @@
-package com.onarandombox.mv5remap;
+package com.onarandombox.legacy.plugin;
 
+import com.onarandombox.legacy.MultiverseLegacy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.SimplePluginManager;
 import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
 import org.mvplugins.multiverse.external.vavr.control.Try;
 
 import java.lang.reflect.Field;
@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 @ApiStatus.Internal
 public class PluginManagerInjector {
 
+    private final MultiverseLegacy multiverseLegacy;
     private final Plugin plugin;
     private final String pluginName;
 
-    public PluginManagerInjector(Plugin plugin, String pluginName) {
+    public PluginManagerInjector(MultiverseLegacy multiverseLegacy, Plugin plugin, String pluginName) {
+        this.multiverseLegacy = multiverseLegacy;
         this.plugin = plugin;
         this.pluginName = pluginName.toLowerCase();
     }
@@ -80,7 +82,7 @@ public class PluginManagerInjector {
         }
     }
 
-    private @NotNull Logger getLogger() {
-        return plugin.getLogger();
+    private Logger getLogger() {
+        return multiverseLegacy.getLogger();
     }
 }

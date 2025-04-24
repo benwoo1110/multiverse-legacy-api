@@ -1,7 +1,7 @@
 package com.onarandombox.MultiverseCore.destination;
 
 import com.onarandombox.MultiverseCore.api.MVDestination;
-import com.onarandombox.mv5remap.destinations.MVDestinationMapper;
+import com.onarandombox.legacy.destinations.MVDestinationMapper;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.mvplugins.multiverse.core.destination.Destination;

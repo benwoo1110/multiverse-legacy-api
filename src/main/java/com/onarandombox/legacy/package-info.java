@@ -1,4 +1,4 @@
 @ApiStatus.Internal
-package com.onarandombox.mv5remap;
+package com.onarandombox.legacy;
 
 import org.jetbrains.annotations.ApiStatus;

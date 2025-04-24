@@ -1,4 +1,4 @@
-package com.onarandombox.mv5remap.events;
+package com.onarandombox.legacy.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;

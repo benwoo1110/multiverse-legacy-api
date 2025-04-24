@@ -1,6 +1,6 @@
 package com.onarandombox.MultiverseCore.destination;
 
-import com.onarandombox.mv5remap.destinations.LegacyMVDestination;
+import com.onarandombox.legacy.destinations.LegacyMVDestination;
 import org.mvplugins.multiverse.core.destination.DestinationInstance;
 
 public class AnchorDestination extends LegacyMVDestination {

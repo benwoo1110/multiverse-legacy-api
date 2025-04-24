@@ -1,11 +1,11 @@
-package com.onarandombox.mv5remap.events;
+package com.onarandombox.legacy.events;
 
 import com.onarandombox.MultiverseCore.MVWorld;
 import com.onarandombox.MultiverseCore.event.MVPlayerTouchedPortalEvent;
 import com.onarandombox.MultiverseCore.event.MVRespawnEvent;
 import com.onarandombox.MultiverseCore.event.MVTeleportEvent;
 import com.onarandombox.MultiverseCore.event.MVWorldDeleteEvent;
-import com.onarandombox.mv5remap.destinations.MVDestinationMapper;
+import com.onarandombox.legacy.destinations.MVDestinationMapper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

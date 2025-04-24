@@ -1,4 +1,4 @@
-package com.onarandombox.mv5remap.events;
+package com.onarandombox.legacy.events;
 
 import com.onarandombox.multiverseinventories.event.GameModeChangeShareHandlingEvent;
 import com.onarandombox.multiverseinventories.event.WorldChangeShareHandlingEvent;
@@ -10,12 +10,12 @@ import org.jetbrains.annotations.ApiStatus;
 public class InventoriesLegacyEventMapper extends LegacyEventMapper implements Listener {
 
     @EventHandler
-    private void onGameModeChangeShareHandling(org.mvplugins.multiverse.inventories.event.GameModeChangeShareHandlingEvent event) {
+    private void onGameModeChangeShareHandlingEvent(org.mvplugins.multiverse.inventories.event.GameModeChangeShareHandlingEvent event) {
         callEvent(new GameModeChangeShareHandlingEvent(event.getPlayer(), event.getFromGameMode(), event.getToGameMode()), event);
     }
 
     @EventHandler
-    private void onWorldChangeShareHandling(org.mvplugins.multiverse.inventories.event.WorldChangeShareHandlingEvent event) {
+    private void onWorldChangeShareHandlingEvent(org.mvplugins.multiverse.inventories.event.WorldChangeShareHandlingEvent event) {
         callEvent(new WorldChangeShareHandlingEvent(event.getPlayer(), event.getFromWorld(), event.getToWorld()), event);
     }
 }

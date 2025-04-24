@@ -20,12 +20,17 @@ repositories {
         name = 'benwoo1110'
         url = uri('https://repo.c0ding.party/multiverse-beta')
     }
+    maven {
+        name = 'onarandombox'
+        url = uri('https://repo.onarandombox.com/content/groups/public')
+    }
 }
 
 dependencies {
     compileOnly('io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT')
     compileOnly('org.mvplugins.multiverse.core:multiverse-core:5.0.0-SNAPSHOT')
     compileOnly('org.mvplugins.multiverse.inventories:multiverse-inventories:5.0.0-SNAPSHOT')
+    compileOnly('org.mvplugins.multiverse.portals:multiverse-portals:5.0.0-SNAPSHOT')
 }
 
 tasks {
