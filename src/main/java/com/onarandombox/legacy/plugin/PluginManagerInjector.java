@@ -4,7 +4,6 @@ import com.onarandombox.legacy.MultiverseLegacy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.SimplePluginManager;
 import org.jetbrains.annotations.ApiStatus;
 import org.mvplugins.multiverse.external.vavr.control.Try;
 
@@ -27,7 +26,7 @@ public class PluginManagerInjector {
 
     public void replacePluginLookup() {
         try {
-            SimplePluginManager pluginManager = (SimplePluginManager) Bukkit.getPluginManager();
+            PluginManager pluginManager = Bukkit.getPluginManager();
             Field lookupNamesField = pluginManager.getClass().getDeclaredField("lookupNames");
             if (lookupNamesField == null) {
                 getLogger().severe("Could not find lookupNames field in PluginManager.");
@@ -47,10 +46,18 @@ public class PluginManagerInjector {
         }
 
         try {
-            SimplePluginManager pluginManager = (SimplePluginManager) Bukkit.getPluginManager();
-            PluginManager paperPluginManager = Try.of(() -> pluginManager.paperPluginManager).getOrNull();
+            PluginManager pluginManager = Bukkit.getPluginManager();
+            Field paperPluginManagerField = Try.of(() -> pluginManager.getClass().getDeclaredField("paperPluginManager"))
+                    .recover(e -> null)
+                    .getOrNull();
+            if (paperPluginManagerField == null) {
+                getLogger().info("Could not find paperPluginManager field in PluginManager. This can be ignore on <1.21.");
+                return;
+            }
+            paperPluginManagerField.setAccessible(true);
+            Object paperPluginManager = paperPluginManagerField.get(pluginManager);
             if (paperPluginManager == null) {
-                getLogger().info("Could not get paperPluginManager from PluginManager. Ignore if using spigot.");
+                getLogger().info("Could not get paperPluginManager from PluginManager. This can be ignore on <1.21.");
                 return;
             }
 
