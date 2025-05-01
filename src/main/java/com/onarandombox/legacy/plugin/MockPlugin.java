@@ -1,9 +1,11 @@
 package com.onarandombox.legacy.plugin;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
@@ -20,19 +22,37 @@ import java.util.logging.Logger;
 
 @ApiStatus.Internal
 public abstract class MockPlugin implements Plugin {
+
+    private final String pluginName;
+    private final String pluginVersion;
+    private final String mainClass;
+
+    private final File dataFolder;
+    private final PluginDescriptionFile pluginDescriptionFile;
+    private final File configFile;
+
+    protected MockPlugin(String pluginName, String pluginVersion, String mainClass) {
+        this.pluginName = pluginName;
+        this.pluginVersion = pluginVersion;
+        this.mainClass = mainClass;
+        this.dataFolder = new File(Bukkit.getPluginsFolder(), pluginName);
+        this.pluginDescriptionFile = new PluginDescriptionFile(pluginName, pluginVersion, mainClass);
+        this.configFile = new File(dataFolder, "config.yml");
+    }
+
     @Override
     public @NotNull File getDataFolder() {
-        return null;
+        return dataFolder;
     }
 
     @Override
     public @NotNull PluginDescriptionFile getDescription() {
-        return null;
+        return pluginDescriptionFile;
     }
 
     @Override
     public @NotNull FileConfiguration getConfig() {
-        return null;
+        return YamlConfiguration.loadConfiguration(configFile);
     }
 
     @Override
@@ -67,12 +87,12 @@ public abstract class MockPlugin implements Plugin {
 
     @Override
     public @NotNull Server getServer() {
-        return null;
+        return Bukkit.getServer();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override

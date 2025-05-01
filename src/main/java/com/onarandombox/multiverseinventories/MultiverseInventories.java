@@ -10,6 +10,10 @@ public final class MultiverseInventories extends MockPlugin {
 
     private static MultiverseInventories instance;
 
+    public MultiverseInventories() {
+        super("Multiverse-Inventories", "4.0.0", MultiverseInventories.class.getName());
+    }
+
     public static MultiverseInventories getPlugin() {
         if (instance == null) {
             throw new IllegalStateException("MultiverseInventories has not been initialized.");

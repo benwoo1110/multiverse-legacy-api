@@ -16,6 +16,10 @@ public final class MultiverseCore extends MockPlugin implements Core {
     private WorldManager legacyWorldManager;
     private AnchorManager legacyAnchorManager;
 
+    public MultiverseCore() {
+        super("Multiverse-Core", "4.0.0", MultiverseCore.class.getName());
+    }
+
     @Override
     public void onEnable() {
         MultiverseCoreApi api = MultiverseCoreApi.get();
