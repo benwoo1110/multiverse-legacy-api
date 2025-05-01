@@ -1,7 +1,5 @@
 package com.onarandombox.legacy.plugin;
 
-import io.papermc.paper.plugin.configuration.PluginMeta;
-import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,11 +27,6 @@ public abstract class MockPlugin implements Plugin {
 
     @Override
     public @NotNull PluginDescriptionFile getDescription() {
-        return null;
-    }
-
-    @Override
-    public @NotNull PluginMeta getPluginMeta() {
         return null;
     }
 
@@ -119,11 +112,6 @@ public abstract class MockPlugin implements Plugin {
 
     @Override
     public @NotNull Logger getLogger() {
-        return null;
-    }
-
-    @Override
-    public @NotNull LifecycleEventManager<Plugin> getLifecycleManager() {
         return null;
     }
 
