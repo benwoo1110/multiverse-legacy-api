@@ -12,6 +12,7 @@ import org.bukkit.generator.ChunkGenerator;
 import org.mvplugins.multiverse.core.world.helpers.PlayerWorldTeleporter;
 import org.mvplugins.multiverse.core.world.options.CloneWorldOptions;
 import org.mvplugins.multiverse.core.world.options.CreateWorldOptions;
+import org.mvplugins.multiverse.core.world.options.DeleteWorldOptions;
 import org.mvplugins.multiverse.core.world.options.RegenWorldOptions;
 import org.mvplugins.multiverse.core.world.options.UnloadWorldOptions;
 import org.mvplugins.multiverse.external.jetbrains.annotations.NotNull;
@@ -60,17 +61,23 @@ public class WorldManager implements MVWorldManager {
 
     @Override
     public boolean deleteWorld(String name) {
-        return worldManager.deleteWorld(name).isSuccess();
+        return worldManager.getWorld(name)
+                .map(world -> worldManager.deleteWorld(DeleteWorldOptions.world(world)).isSuccess())
+                .getOrElse(false);
     }
 
     @Override
     public boolean deleteWorld(String name, boolean removeConfig) {
-        return worldManager.deleteWorld(name).isSuccess();
+        return worldManager.getWorld(name)
+                .map(world -> worldManager.deleteWorld(DeleteWorldOptions.world(world)).isSuccess())
+                .getOrElse(false);
     }
 
     @Override
     public boolean deleteWorld(String name, boolean removeFromConfig, boolean deleteWorldFolder) {
-        return worldManager.deleteWorld(name).isSuccess();
+        return worldManager.getWorld(name)
+                .map(world -> worldManager.deleteWorld(DeleteWorldOptions.world(world)).isSuccess())
+                .getOrElse(false);
     }
 
     @Override
