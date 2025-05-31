@@ -1,14 +1,19 @@
 package com.onarandombox.multiverseinventories;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
+import com.onarandombox.MultiverseCore.api.MVPlugin;
 import com.onarandombox.legacy.plugin.MockPlugin;
 import com.onarandombox.multiverseinventories.profile.WorldGroupManager;
+import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 import org.mvplugins.multiverse.core.command.MVCommandManager;
 import org.mvplugins.multiverse.inventories.MultiverseInventoriesApi;
 
-public final class MultiverseInventories extends MockPlugin {
+public final class MultiverseInventories extends MockPlugin implements MVPlugin {
 
     private static MultiverseInventories instance;
+
+    private MultiverseCore core;
 
     public MultiverseInventories() {
         super("Multiverse-Inventories", "4.0.0", MultiverseInventories.class.getName());
@@ -25,6 +30,7 @@ public final class MultiverseInventories extends MockPlugin {
 
     @Override
     public void onEnable() {
+        core = (MultiverseCore) Bukkit.getPluginManager().getPlugin("Multiverse-Core");
         MultiverseInventoriesApi api = MultiverseInventoriesApi.get();
         legacyWorldGroupManager = new YamlWorldGroupManager(api.getServiceLocator().getService(MVCommandManager.class), api.getWorldGroupManager());
         instance = this;
@@ -40,5 +46,25 @@ public final class MultiverseInventories extends MockPlugin {
      */
     public WorldGroupManager getGroupManager() {
         return legacyWorldGroupManager;
+    }
+
+    @Override
+    public String dumpVersionInfo(String buffer) {
+        return "";
+    }
+
+    @Override
+    public MultiverseCore getCore() {
+        return core;
+    }
+
+    @Override
+    public void setCore(MultiverseCore core) {
+        this.core = core;
+    }
+
+    @Override
+    public int getProtocolVersion() {
+        return 24;
     }
 }

@@ -1,6 +1,7 @@
 package com.onarandombox.MultiverseCore;
 
 import com.onarandombox.MultiverseCore.api.Core;
+import com.onarandombox.MultiverseCore.api.MVPlugin;
 import com.onarandombox.MultiverseCore.api.MVWorldManager;
 import com.onarandombox.MultiverseCore.destination.DestinationFactory;
 import com.onarandombox.MultiverseCore.utils.AnchorManager;
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.mvplugins.multiverse.core.MultiverseCoreApi;
 import org.mvplugins.multiverse.core.world.helpers.PlayerWorldTeleporter;
 
-public final class MultiverseCore extends MockPlugin implements Core {
+public final class MultiverseCore extends MockPlugin implements Core, MVPlugin {
 
     private DestinationFactory legacyDestinationFactory;
     private WorldManager legacyWorldManager;
@@ -46,5 +47,25 @@ public final class MultiverseCore extends MockPlugin implements Core {
     @Override
     public AnchorManager getAnchorManager() {
         return legacyAnchorManager;
+    }
+
+    @Override
+    public String dumpVersionInfo(String buffer) {
+        return ""; // should be already deprecated anyways
+    }
+
+    @Override
+    public MultiverseCore getCore() {
+        return this;
+    }
+
+    @Override
+    public void setCore(MultiverseCore core) {
+        // ignore as this is already core
+    }
+
+    @Override
+    public int getProtocolVersion() {
+        return 24;
     }
 }
