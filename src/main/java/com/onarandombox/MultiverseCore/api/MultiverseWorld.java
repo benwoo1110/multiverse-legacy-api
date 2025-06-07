@@ -10,6 +10,8 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.WorldType;
 import org.bukkit.permissions.Permission;
+import org.jetbrains.annotations.ApiStatus;
+import org.mvplugins.multiverse.core.world.LoadedMultiverseWorld;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -573,4 +575,7 @@ public interface MultiverseWorld {
      * @param allowFlight True to allow flight in this world.
      */
     void setAllowFlight(final boolean allowFlight);
+
+    @ApiStatus.Internal
+    LoadedMultiverseWorld getWrappedWorld();
 }

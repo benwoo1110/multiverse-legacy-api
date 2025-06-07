@@ -1,6 +1,7 @@
 package com.onarandombox.legacy;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
+import com.onarandombox.MultiversePortals.MultiversePortals;
 import com.onarandombox.legacy.events.CoreLegacyEventMapper;
 import com.onarandombox.legacy.events.InventoriesLegacyEventMapper;
 import com.onarandombox.legacy.events.PortalsLegacyEventMapper;
@@ -64,6 +65,9 @@ public class MultiverseLegacy extends JavaPlugin implements Listener {
 
     private void onMultiversePortalsEnable() {
         getLogger().info("Multiverse-Legacy-Api loading Multiverse-Portals v4 api...");
+        MultiversePortals multiversePortals = new MultiversePortals();
+        multiversePortals.onEnable();
+        new PluginManagerInjector(this, multiversePortals, "Multiverse-Portals").replacePluginLookup();
         Bukkit.getPluginManager().registerEvents(new PortalsLegacyEventMapper(), this);
     }
 }

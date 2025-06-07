@@ -9,6 +9,9 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import org.jetbrains.annotations.ApiStatus;
+import org.mvplugins.multiverse.core.MultiverseCoreApi;
+import org.mvplugins.multiverse.core.destination.core.ExactDestination;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -39,9 +42,9 @@ public class MVPortal {
         return mvPortal.useSafeTeleporter();
     }
 
-//    public static MVPortal loadMVPortalFromConfig(MultiversePortals instance, String name) {
-//
-//    }
+    public static MVPortal loadMVPortalFromConfig(MultiversePortals instance, String name) {
+        throw new UnsupportedOperationException();
+    }
 
     public Material getCurrency() {
         return mvPortal.getCurrency();
@@ -56,19 +59,23 @@ public class MVPortal {
     }
 
     public boolean setPortalLocation(String locationString, MultiverseWorld world) {
-        throw new UnsupportedOperationException();
+        return mvPortal.setPortalLocation(locationString, world.getWrappedWorld());
     }
 
-//    public boolean setPortalLocation(PortalLocation location) {
-//
-//    }
+    public boolean setPortalLocation(PortalLocation location) {
+        return mvPortal.setPortalLocation(location.getWrappedPortalLocation());
+    }
 
     public boolean setDestination(String destinationString) {
         return mvPortal.setDestination(destinationString);
     }
 
     public boolean setExactDestination(Location location) {
-        throw new UnsupportedOperationException();
+        return mvPortal.setDestination(MultiverseCoreApi.get().getServiceLocator().getService(ExactDestination.class).fromLocation(location));
+    }
+
+    public PortalLocation getLocation() {
+        return new PortalLocation(mvPortal.getLocation());
     }
 
     public Material getFillMaterial() throws IllegalStateException {
@@ -129,5 +136,10 @@ public class MVPortal {
 
     public Permission getExempt() {
         return mvPortal.getExempt();
+    }
+
+    @ApiStatus.Internal
+    public org.mvplugins.multiverse.portals.MVPortal getWrappedPortal() {
+        return mvPortal;
     }
 }

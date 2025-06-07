@@ -382,4 +382,9 @@ public class MVWorld implements MultiverseWorld {
     public void setAllowFlight(boolean allowFlight) {
         mvWorld.setAllowFlight(allowFlight);
     }
+
+    @Override
+    public LoadedMultiverseWorld getWrappedWorld() {
+        return mvWorld;
+    }
 }
